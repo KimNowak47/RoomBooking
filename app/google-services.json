@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "844683389499",
+    "firebase_url": "https://roombooking-16b5b.firebaseio.com",
+    "project_id": "roombooking-16b5b",
+    "storage_bucket": "roombooking-16b5b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844683389499:android:09d7c290509cfaff54ca1e",
+        "android_client_info": {
+          "package_name": "com.example.roombooking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "844683389499-rpk2lmt2sovgssjrukc8dr8ot57667n0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.roombooking",
+            "certificate_hash": "19e2ef4ae2abf3a6e6069a6b4348ee7797beef59"
+          }
+        },
+        {
+          "client_id": "844683389499-f4cg8sac940bg9r5t6t78i423179a7ie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdsyX6AX303ypBrXjVuJwa94J4jcX04fk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "844683389499-f4cg8sac940bg9r5t6t78i423179a7ie.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
