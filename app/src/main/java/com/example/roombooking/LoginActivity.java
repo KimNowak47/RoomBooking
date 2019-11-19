@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button signUp;
 
     private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
+
 
 
     @Override
