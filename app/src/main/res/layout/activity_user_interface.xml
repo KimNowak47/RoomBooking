@@ -25,12 +25,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reservationListView" />
 
-    <TextView
-        android:id="@+id/userInfoView"
-        android:layout_width="156dp"
-        android:layout_height="62dp"
-        android:text="User Info"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+    <Button
+        android:id="@+id/room_book_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Book room"
         app:layout_constraintBottom_toTopOf="@+id/reservationListView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,18 +1,26 @@
 package com.example.roombooking;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
+
 
 import org.jetbrains.annotations.NotNull;
 
@@ -26,7 +34,8 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class UserInterfaceActivity extends AppCompatActivity {
+public class UserInterfaceActivity extends AppCompatActivity
+{
 
     FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
@@ -35,10 +44,11 @@ public class UserInterfaceActivity extends AppCompatActivity {
     ListView myResListView;
     ArrayAdapter<Reservation> arrayAdapter;
     SwipeRefreshLayout sr;
-    TextView userInfoView;
-    int selectedItem = -1;
+
+
     View selectedView;
-    Button delBtn;
+    Button delButton;
+    Button roomBookButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -49,21 +59,58 @@ public class UserInterfaceActivity extends AppCompatActivity {
         myResListView = findViewById(R.id.reservationListView);
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, myReservations);
         myResListView.setAdapter(arrayAdapter);
-        userInfoView = findViewById(R.id.userInfoView);
 
-        delBtn = findViewById(R.id.deleteButton);
+        delButton = findViewById(R.id.deleteButton);
 
-        delBtn.setOnClickListener(new View.OnClickListener() {
+        roomBookButton =findViewById(R.id.room_book_button);
+
+        roomBookButton.setOnClickListener(new View.OnClickListener()
+        {
+        @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(UserInterfaceActivity.this, RoomListActivity.class));
+            }
+        });
+
+
+        delButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 //deleteReservation();
             }
         });
 
+
+
         showMyReservations(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
     }
-        private void showMyReservations(String userId) {
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.update_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.update_reslist:
+                showMyReservations(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+        private void showMyReservations(String userId)
+        {
             OkHttpClient client = new OkHttpClient();
             Log.d("TAG", userId);
             final Request request = new Request.Builder().url("http://anbo-roomreservationv3.azurewebsites.net/api/Reservations/user/" + userId).build();
@@ -88,12 +135,12 @@ public class UserInterfaceActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Log.d("TAG", "run bitch");
+                                Log.d("TAG", "Henter...");
                                 arrayAdapter.notifyDataSetChanged();
                             }
                         });
                     }
-                    sr.setRefreshing(false);
+
                 }
             });
         }
