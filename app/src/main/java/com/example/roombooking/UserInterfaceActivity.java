@@ -33,10 +33,10 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class UserInterfaceActivity extends AppCompatActivity {
+public class UserInterfaceActivity extends AppCompatActivity
+{
 
-    FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
+
     ArrayList<Reservation> myReservations = new ArrayList<>();
     int selectedItem = -1;
     ListView myResListView;
@@ -48,7 +48,8 @@ public class UserInterfaceActivity extends AppCompatActivity {
     Button roomBookButton;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_interface);
 
